@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Example</title>
+  <style>
+    /* Optional: some basic styling for the example */
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    input[type="text"] {
+      padding: 8px;
+      font-size: 16px;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <input type="text" id="searchInput" placeholder="Search...">
+  
+  <ul id="resultsList">
+    <li>Apple</li>
+    <li>Orange</li>
+    <li>Banana</li>
+    <li>Pineapple</li>
+    <li>Grapes</li>
+  </ul>
+
+  <script>
+    // JavaScript code for search functionality
+    // Get the input field and list
+    const searchInput = document.getElementById('searchInput');
+    const resultsList = document.getElementById('resultsList');
+    
+    // Add event listener for input on the search field
+    searchInput.addEventListener('input', function() {
+      const searchText = searchInput.value.toLowerCase(); // Get input value and convert to lowercase
+      const items = resultsList.getElementsByTagName('li'); // Get all list items
+      
+      // Loop through all items, hide those that do not match the search query
+      Array.from(items).forEach(function(item) {
+        const text = item.textContent.toLowerCase();
+        if (text.includes(searchText)) {
+          item.style.display = 'block'; // Show matching items
+        } else {
+          item.style.display = 'none'; // Hide non-matching items
+        }
+      });
+    });
+  </script>
+</body>
+</html>
